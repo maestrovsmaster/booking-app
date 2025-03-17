@@ -20,6 +20,9 @@ app.use(express_1.default.json());
 app.use('/api/auth', AuthRoutes_1.authRoutes);
 app.use('/api/services', ServiceRoutes_1.serviceRoutes);
 app.use('/api/bookings', BookingRoutes_1.bookingRoutes);
+app.get('/', (req, res) => {
+    res.send('Backend is running on port 5001');
+});
 const PORT = process.env.PORT || 5001;
 mongoose_1.default.connect(process.env.DATABASE_URL)
     .then(() => {
@@ -27,8 +30,3 @@ mongoose_1.default.connect(process.env.DATABASE_URL)
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
     .catch(err => console.log(err));
-/*app._router.stack.forEach((r: any) => {
-    if (r.route && r.route.path) {
-        console.log(`${Object.keys(r.route.methods).join(', ').toUpperCase()} ${r.route.path}`);
-    }
-});*/
