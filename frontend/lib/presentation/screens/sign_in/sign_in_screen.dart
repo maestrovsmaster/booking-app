@@ -57,8 +57,7 @@ class SignInScreen extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Login successful!")),
                         );
-                        //context.pop(); //
-                        context.pushReplacement(AppRoutes.welcome);
+                        context.pushReplacement(AppRoutes.main);
                       }
                     },
                     builder: (context, state) {

@@ -1,7 +1,10 @@
 
 import 'package:dio/dio.dart';
 import 'package:frontend/data/net/global_interceptor.dart';
+import 'package:frontend/domain/repositories/services_repository.dart';
 import 'package:frontend/domain/repositories/sign_in_repository.dart';
+import 'package:frontend/presentation/block/main_screen/main_screen_block.dart';
+import 'package:frontend/presentation/block/services_list/services_block.dart';
 import 'package:frontend/presentation/block/token_cubit/token_cubit.dart';
 import 'package:frontend/presentation/block/user_cubit/user_cubit.dart';
 import 'package:frontend/presentation/block/user_register/register_block.dart';
@@ -13,9 +16,7 @@ import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
 
-/// Initialize the dependency injection container.
-/// assets - mock data from assets
-/// generator - mock data from generator
+
 Future<void> init() async {
 
   final dio = Dio();
@@ -29,10 +30,13 @@ Future<void> init() async {
   sl.registerLazySingleton(() => UserCubit());
 
   sl.registerLazySingleton(() => SignInRepository(sl<Dio>()));
+  sl.registerLazySingleton(() => ServicesRepository(sl<Dio>()));
 
   sl.registerFactory(() => WelcomeBloc(repository: sl<SignInRepository>(),  authInterceptor: sl<AuthInterceptor>()));
   sl.registerFactory(() => RegisterBloc(repository: sl<SignInRepository>(), tokenCubit: sl<TokenCubit>()));
   sl.registerFactory(() => SignInBloc(repository: sl<SignInRepository>(), tokenCubit: sl<TokenCubit>()));
+  sl.registerFactory(() => MainScreenBloc(repository: sl<SignInRepository>()));
+  sl.registerFactory(() => ServicesBloc(repository: sl<ServicesRepository>()));
 
 
 }

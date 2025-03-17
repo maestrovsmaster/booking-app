@@ -1,5 +1,6 @@
 
 import 'package:frontend/data/models/app_user.dart';
+import 'package:frontend/presentation/screens/main_screen/main_screen.dart';
 import 'package:frontend/presentation/screens/register_user_screen/register_screen.dart';
 import 'package:frontend/presentation/screens/sign_in/sign_in_screen.dart';
 import 'package:frontend/presentation/screens/welcome_screen/welcome_screen.dart';
@@ -19,7 +20,7 @@ class AppRoutes {
 
 class AppRouter {
   final GoRouter _router = GoRouter(
-    initialLocation: AppRoutes.welcome,
+    initialLocation: AppRoutes.main,
     routes: [
       GoRoute(
         path: AppRoutes.welcome,
@@ -42,14 +43,14 @@ class AppRouter {
         },
       ),
 
-    /*  GoRoute(
+      GoRoute(
           path: AppRoutes.main,
           pageBuilder: (context, state) {
             return const CustomTransitionPage(
               child: MainScreen(),
               transitionsBuilder: slideTransition,
             );
-          }),*/
+          }),
 
     ],
   );

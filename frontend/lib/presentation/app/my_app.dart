@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/theme/app_theme.dart';
+import 'package:frontend/presentation/block/services_list/services_block.dart';
 import 'package:frontend/presentation/block/user_register/register_block.dart';
 import 'package:frontend/presentation/block/user_sign_in/sign_in_block.dart';
 import 'package:frontend/presentation/block/welcome/welcome_block.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => di.sl<SignInBloc>()
+        ),
+        BlocProvider(
+            create: (context) => di.sl<ServicesBloc>()
         ),
 
       ],

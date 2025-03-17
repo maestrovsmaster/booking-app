@@ -39,4 +39,10 @@ dev_dependencies:
 flutter:
 
 
+  assets:
+    - .env
+    - assets/ic_booking.svg
+    - assets/ic_category.svg
+
+
   uses-material-design: true
